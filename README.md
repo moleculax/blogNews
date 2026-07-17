@@ -62,3 +62,34 @@ python3 manage.py createsuperuser
 ```
 python3 manage.py runserver
 ```
+
+## SI QUIERES USAR DOCKER
+
+**Construir directamente desde GitHub (sin clonar)**
+
+```
+docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#main
+```
+## Verificar que la imagen se creó
+```
+# Listar las imágenes Docker
+docker images
+```
+## Ejecutar en modo simple
+```
+docker run -p 8000:8000 blog-news:latest
+```
+##  Verificar que funciona
+```
+# Ver logs en tiempo real
+docker logs -f blog-container
+
+# Ver logs de los últimos 50 líneas
+docker logs --tail 50 blog-container
+```
+##  Acceder a la aplicación
+```
+http://localhost:8000
+
+http://localhost:8000/swagger/
+```

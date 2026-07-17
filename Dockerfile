@@ -8,9 +8,7 @@ FROM python:3.12-slim
 # ============================================
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    DJANGO_SETTINGS_MODULE=blog.settings \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    DJANGO_SETTINGS_MODULE=blog.settings
 
 # ============================================
 # 3. INSTALAR DEPENDENCIAS DEL SISTEMA
@@ -36,17 +34,17 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DEPENDENCIAS
+# 7. INSTALAR DEPENDENCIAS (sin resolver dependencias)
 # ============================================
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --no-deps -r requirements.txt
 
 # ============================================
 # 8. INSTALAR GUNICORN
 # ============================================
-RUN pip install --no-cache-dir gunicorn==23.0.0
+RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
 
 # ============================================
-# 9. CREAR DIRECTORIOS PARA ARCHIVOS ESTÁTICOS
+# 9. CREAR DIRECTORIOS
 # ============================================
 RUN mkdir -p /app/staticfiles /app/media
 

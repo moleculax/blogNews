@@ -44,12 +44,14 @@ pip install -r requirements.txt
 
 ##  Migrar base de datos
 
-
 ````
 python manage.py makemigrations
 python manage.py migrate
 ````
-
+## Create superuser
+```
+python manage.py createsuperuser
+```
 
 ## Ejecutar servidor
 

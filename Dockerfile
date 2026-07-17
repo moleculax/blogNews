@@ -1,7 +1,7 @@
 # ============================================
 # 1. IMAGEN BASE
 # ============================================
-FROM python:3.11-slim-bullseye
+FROM python:3.12-slim
 
 # ============================================
 # 2. VARIABLES DE ENTORNO
@@ -29,28 +29,36 @@ RUN git clone --depth 1 --branch main https://github.com/moleculax/blogNews.git 
 WORKDIR /app
 
 # ============================================
-# 6. ACTUALIZAR PIP Y INSTALAR DEPENDENCIAS
+# 6. ACTUALIZAR PIP
 # ============================================
-# IMPORTANTE: Actualizar pip primero
 RUN pip install --upgrade pip
 
-# Instalar dependencias
+# ============================================
+# 7. INSTALAR DJANGO PRIMERO
+# ============================================
+RUN pip install --no-cache-dir Django==6.0.7
+
+# ============================================
+# 8. INSTALAR EL RESTO DE DEPENDENCIAS
+# ============================================
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Instalar Gunicorn
+# ============================================
+# 9. INSTALAR GUNICORN
+# ============================================
 RUN pip install --no-cache-dir gunicorn
 
 # ============================================
-# 7. CREAR DIRECTORIOS PARA ARCHIVOS ESTÁTICOS
+# 10. CREAR DIRECTORIOS
 # ============================================
 RUN mkdir -p /app/staticfiles /app/media
 
 # ============================================
-# 8. PUERTO EXPUESTO
+# 11. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 9. COMANDO DE INICIO
+# 12. COMANDO DE INICIO
 # ============================================
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]

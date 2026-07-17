@@ -106,3 +106,17 @@ Instalará las dependencias de Python desde requirements.txt
 Instalará Gunicorn (servidor web)
 
 Creará la imagen lista para ejecutar
+
+
+## OJO:
+🐳 Reconstruir la imagen
+```
+# Limpiar caché de Docker
+sudo docker system prune -f
+
+# Reconstruir la imagen
+sudo docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#main
+
+# Ejecutar el contenedor
+sudo docker run -p 8000:8000 blog-news:latest
+```

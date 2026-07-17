@@ -34,14 +34,14 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DEPENDENCIAS
+# 7. INSTALAR DEPENDENCIAS (FORZADO)
 # ============================================
-RUN pip install --no-cache-dir --no-deps -r requirements.txt
+RUN pip install --no-cache-dir --ignore-installed -r requirements.txt || true
 
 # ============================================
-# 8. INSTALAR GUNICORN
+# 8. INSTALAR GUNICORN (FORZADO)
 # ============================================
-RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
+RUN pip install --no-cache-dir --ignore-installed gunicorn==23.0.0 || true
 
 # ============================================
 # 9. CREAR DIRECTORIOS

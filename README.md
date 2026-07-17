@@ -32,6 +32,7 @@ gestión de artículos, desarrollada con **Django y Bootstrap**.
 - **Librerías adicionales**: 
   - SweetAlert2 para alertas
   - djangorestframework-simplejwt para JWT
+- **Docker**
 
 ## Crear y activar entorno virtual
  ```
@@ -120,3 +121,6 @@ sudo docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#
 # Ejecutar el contenedor
 sudo docker run -p 8000:8000 blog-news:latest
 ```
+**Probado en Debian 13, tambien puede ejecutarse sin problemas en Windows**
+
+**🚀 TODO EL PROYECTO ESTÁ COMPLETO. y se ajustara periodicamente**

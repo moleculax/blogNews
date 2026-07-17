@@ -49,6 +49,7 @@ RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
 RUN mkdir -p /app/staticfiles /app/media /app/data
 
 # ============================================
+
 # 10. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000

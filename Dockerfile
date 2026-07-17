@@ -59,6 +59,6 @@ VOLUME ["/app/db.sqlite3", "/app/media", "/app/staticfiles"]
 EXPOSE 8000
 
 # ============================================
-# 12. DETECTAR SQLITE Y EJECUTAR MIGRACIONES
+# 12. COMANDO DE INICIO
 # ============================================
-CMD ["sh", "-c", "if [ -f /app/db.sqlite3 ]; then echo 'Base de datos SQLite encontrada'; else echo 'Creando base de datos...' && python manage.py migrate --noinput && echo 'Base de datos creada'; fi && gunicorn --bind 0.0.0.0:8000 blog.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]

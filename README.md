@@ -52,7 +52,7 @@ Plataforma moderna y profesional para la publicación y gestión de artículos, 
 **Construir directamente desde GitHub (sin clonar)**
 
 ```
-docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#main
+sudo docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#main
 ```
 ## Verificar que la imagen se creó
 ```

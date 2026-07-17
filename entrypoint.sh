@@ -47,13 +47,13 @@ if not User.objects.filter(is_superuser=True).exists():
     User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
     print('✅ Superusuario creado: admin / admin123')
 else:
-    print('ℹ️  Superusuario ya existe')
+    print(' Superusuario ya existe')
 "
 
 # ============================================
 # 5. VERIFICAR CATEGORÍAS (cargar si no existen)
 # ============================================
-echo "🏷️  Verificando categorías..."
+echo " Verificando categorías..."
 python manage.py shell -c "
 import json
 from django.conf import settings
@@ -99,7 +99,7 @@ echo "=========================================="
 # ============================================
 # 7. INICIAR GUNICORN
 # ============================================
-echo "🚀 Iniciando Gunicorn..."
+echo " Iniciando Gunicorn..."
 exec gunicorn --bind 0.0.0.0:8000 \
     --workers 3 \
     --threads 2 \

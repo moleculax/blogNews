@@ -1,70 +1,53 @@
-##  📰 BlogNews - Plataforma de Publicación de Artículos 
+# 📰 Blog News - Plataforma de Publicación de Artículos
 
-## V1.0 
-Plataforma  para la publicación y
-gestión de artículos, desarrollada con **Django y Bootstrap**.
+![Django Version](https://img.shields.io/badge/Django-6.0.7-092E20?logo=django&logoColor=white)
+![Python Version](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Development-003B57?logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Compatible-4169E1?logo=postgresql&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-Compatible-003545?logo=mariadb&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-FF6C37?logo=postman&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-Documentation-85EA2D?logo=swagger&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?logo=jsonwebtokens&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white)
 
-[![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blogNew_00.png)](https://github.com/moleculax/blogNews/blob/main/media/imagenarticulos/blogNew_00.png)
+Plataforma moderna y profesional para la publicación y gestión de artículos, construida con Django y Bootstrap.
 
 ## 🚀 Características Principales
 
-- 🔐 **Autenticación de usuarios** (Login/Registro)
+- 🔐 **Autenticación de usuarios** (Login/Registro) con JWT
 - 📝 **CRUD completo de artículos** (Crear, Leer, Actualizar, Eliminar)
 - 🏷️ **Categorías** para organizar los artículos
 - 🖼️ **Gestión de imágenes** para cada artículo
 - 📊 **Dashboard personalizado** para cada usuario
 - ⏱️ **Tiempo de publicación** (hace X tiempo)
-- 📱 **Diseño responsive**
+- 📱 **Diseño responsive** y moderno con Bootstrap 5
 - 🔍 **Paginación** de artículos
-- 🎨 **Interfaz** con Bootstrap 5
-
-
-![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blognews_0.png)
+- 🎨 **Interfaz profesional** con Bootstrap Icons
+- 🐳 **Despliegue con Docker**
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **Backend**: Django 6.0.7
-- **Frontend**: Bootstrap 5, Bootstrap Icons
-- **Base de Datos**: SQLite (desarrollo) Puede migrar a postgreSQL/MariaDB
-- **Autenticación**: Django Auth con modelo personalizado
-- **API**: Django REST Framework
-- **Documentación API**: drf-yasg (Swagger)
-- **Librerías adicionales**: 
-  - SweetAlert2 para alertas
-  - djangorestframework-simplejwt para JWT
-- **Docker**
+| Tecnología | Descripción | Badge |
+|------------|-------------|-------|
+| **Backend** | Django 6.0.7 | ![Django](https://img.shields.io/badge/Django-6.0.7-092E20?logo=django&logoColor=white) |
+| **Frontend** | Bootstrap 5, Bootstrap Icons | ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white) |
+| **Base de Datos** | SQLite (desarrollo) / PostgreSQL / MariaDB | ![SQLite](https://img.shields.io/badge/SQLite-Dev-003B57?logo=sqlite&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-OK-4169E1?logo=postgresql&logoColor=white) |
+| **Autenticación** | Django Auth con modelo personalizado + JWT | ![JWT](https://img.shields.io/badge/JWT-Auth-000000?logo=jsonwebtokens&logoColor=white) |
+| **API** | Django REST Framework | ![REST API](https://img.shields.io/badge/REST-API-FF6C37?logo=postman&logoColor=white) |
+| **Documentación API** | drf-yasg (Swagger) | ![Swagger](https://img.shields.io/badge/Swagger-Docs-85EA2D?logo=swagger&logoColor=white) |
+| **Alertas** | SweetAlert2 | ![SweetAlert2](https://img.shields.io/badge/SweetAlert2-Alerts-FF6C37) |
+| **Docker** | Containerización | ![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker&logoColor=white) |
 
-## Crear y activar entorno virtual
- ```
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
 
-```
 
-## . Instalar dependencias
+[![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blogNew_00.png)](https://github.com/moleculax/blogNews/blob/main/media/imagenarticulos/blogNew_00.png)
 
-```
-pip install -r requirements.txt
-```
 
-##  Migrar base de datos
 
-````
-python3 manage.py makemigrations
-python3 manage.py migrate
-````
-## Create superuser
-```
-python3 manage.py createsuperuser
-```
-
-## Ejecutar servidor
-
-```
-python3 manage.py runserver
-```
-
-## SI QUIERES USAR DOCKER
+## 🐳  PRUEBELO USANDO DOCKER
 
 **Construir directamente desde GitHub (sin clonar)**
 
@@ -122,5 +105,8 @@ sudo docker build -t blog-news:latest https://github.com/moleculax/blogNews.git#
 sudo docker run -p 8000:8000 blog-news:latest
 ```
 **Probado en Debian 13, tambien puede ejecutarse sin problemas en Windows**
+
+![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blognews_0.png)
+
 
 **🚀 TODO EL PROYECTO ESTÁ COMPLETO. y se ajustara periodicamente**

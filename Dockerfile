@@ -34,21 +34,26 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DEPENDENCIAS
+# 7. INSTALAR DEPENDENCIAS CON --no-deps
 # ============================================
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --no-deps -r requirements.txt
 
 # ============================================
-# 8. CREAR DIRECTORIOS
+# 8. INSTALAR GUNICORN
+# ============================================
+RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
+
+# ============================================
+# 9. CREAR DIRECTORIOS
 # ============================================
 RUN mkdir -p /app/staticfiles /app/media /app/data
 
 # ============================================
-# 9. PUERTO EXPUESTO
+# 10. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 10. COMANDO DE INICIO
+# 11. COMANDO DE INICIO
 # ============================================
 CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 blog.wsgi:application"]

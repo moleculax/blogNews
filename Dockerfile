@@ -34,14 +34,22 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DEPENDENCIAS (FORZADO)
+# 7. INSTALAR DJANGO Y DEPENDENCIAS
 # ============================================
-RUN pip install --no-cache-dir --ignore-installed -r requirements.txt || true
+RUN pip install --no-cache-dir \
+    Django==6.0.7 \
+    djangorestframework==3.15.2 \
+    djangorestframework-simplejwt==5.3.1 \
+    drf-yasg==1.21.8 \
+    pillow==10.4.0 \
+    psycopg2-binary==2.9.10 \
+    python-dotenv==1.0.1 \
+    django-cors-headers==4.6.0
 
 # ============================================
-# 8. INSTALAR GUNICORN (FORZADO)
+# 8. INSTALAR GUNICORN
 # ============================================
-RUN pip install --no-cache-dir --ignore-installed gunicorn==23.0.0 || true
+RUN pip install --no-cache-dir gunicorn==23.0.0
 
 # ============================================
 # 9. CREAR DIRECTORIOS

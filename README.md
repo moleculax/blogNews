@@ -93,3 +93,16 @@ http://localhost:8000
 
 http://localhost:8000/swagger/
 ```
+
+## Lo que va a pasar
+Docker descargará el código desde GitHub
+
+Instalará las dependencias del sistema (git, gcc)
+
+Clonará tu repositorio dentro del contenedor
+
+Instalará las dependencias de Python desde requirements.txt
+
+Instalará Gunicorn (servidor web)
+
+Creará la imagen lista para ejecutar

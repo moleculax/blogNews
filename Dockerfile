@@ -58,6 +58,6 @@ RUN mkdir -p /app/staticfiles /app/media /app/data
 EXPOSE 8000
 
 # ============================================
-# 10. COMANDO DE INICIO
+# 10. COMANDO DE INICIO CON MIGRACIONES
 # ============================================
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]
+CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 blog.wsgi:application"]

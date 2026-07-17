@@ -34,7 +34,7 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DJANGO Y DEPENDENCIAS
+# 7. INSTALAR DEPENDENCIAS
 # ============================================
 RUN pip install --no-cache-dir \
     Django==6.0.7 \
@@ -44,24 +44,20 @@ RUN pip install --no-cache-dir \
     pillow==10.4.0 \
     psycopg2-binary==2.9.10 \
     python-dotenv==1.0.1 \
-    django-cors-headers==4.6.0
+    django-cors-headers==4.6.0 \
+    gunicorn==23.0.0
 
 # ============================================
-# 8. INSTALAR GUNICORN
-# ============================================
-RUN pip install --no-cache-dir gunicorn==23.0.0
-
-# ============================================
-# 9. CREAR DIRECTORIOS
+# 8. CREAR DIRECTORIOS
 # ============================================
 RUN mkdir -p /app/staticfiles /app/media /app/data
 
 # ============================================
-# 10. PUERTO EXPUESTO
+# 9. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 11. COMANDO DE INICIO
+# 10. COMANDO DE INICIO
 # ============================================
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]

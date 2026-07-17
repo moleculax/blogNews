@@ -14,9 +14,9 @@ gestión de artículos, desarrollada con **Django y Bootstrap**.
 - 🖼️ **Gestión de imágenes** para cada artículo
 - 📊 **Dashboard personalizado** para cada usuario
 - ⏱️ **Tiempo de publicación** (hace X tiempo)
-- 📱 **Diseño responsive** y moderno
+- 📱 **Diseño responsive**
 - 🔍 **Paginación** de artículos
-- 🎨 **Interfaz profesional** con Bootstrap 5
+- 🎨 **Interfaz** con Bootstrap 5
 
 
 ![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blognews_0.png)
@@ -37,8 +37,7 @@ gestión de artículos, desarrollada con **Django y Bootstrap**.
  ```
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
-# o
-venv\Scripts\activate  # Windows
+
 ```
 
 ## . Instalar dependencias
@@ -50,16 +49,16 @@ pip install -r requirements.txt
 ##  Migrar base de datos
 
 ````
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 ````
 ## Create superuser
 ```
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
 
 ## Ejecutar servidor
 
-````
-python manage.py runserver
+```
+python3 manage.py runserver
 ```

@@ -29,9 +29,15 @@ RUN git clone --depth 1 --branch main https://github.com/moleculax/blogNews.git 
 WORKDIR /app
 
 # ============================================
-# 6. INSTALAR DEPENDENCIAS DE PYTHON
+# 6. ACTUALIZAR PIP Y INSTALAR DEPENDENCIAS
 # ============================================
+# IMPORTANTE: Actualizar pip primero
+RUN pip install --upgrade pip
+
+# Instalar dependencias
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Instalar Gunicorn
 RUN pip install --no-cache-dir gunicorn
 
 # ============================================

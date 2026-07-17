@@ -34,7 +34,7 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DEPENDENCIAS (sin resolver dependencias)
+# 7. INSTALAR DEPENDENCIAS
 # ============================================
 RUN pip install --no-cache-dir --no-deps -r requirements.txt
 
@@ -46,14 +46,19 @@ RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
 # ============================================
 # 9. CREAR DIRECTORIOS
 # ============================================
-RUN mkdir -p /app/staticfiles /app/media
+RUN mkdir -p /app/staticfiles /app/media /app/data
 
 # ============================================
-# 10. PUERTO EXPUESTO
+# 10. DECLARAR VOLÚMENES PARA DATOS PERSISTENTES
+# ============================================
+VOLUME ["/app/db.sqlite3", "/app/media", "/app/staticfiles"]
+
+# ============================================
+# 11. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 11. COMANDO DE INICIO
+# 12. DETECTAR SQLITE Y EJECUTAR MIGRACIONES
 # ============================================
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]
+CMD ["sh", "-c", "if [ -f /app/db.sqlite3 ]; then echo 'Base de datos SQLite encontrada'; else echo 'Creando base de datos...' && python manage.py migrate --noinput && echo 'Base de datos creada'; fi && gunicorn --bind 0.0.0.0:8000 blog.wsgi:application"]

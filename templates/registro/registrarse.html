@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+
+{% load static %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <!-- Bootstrap 5 CSS -->
+   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-icons/font/bootstrap-icons.css' %}">
+</head>
+<body class="bg-light">
+
+ {% include "includes/navbar.html" %}
+
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h4 class="mb-0">Registro de Cuenta</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- 'novalidate' desactiva los tooltips del navegador para usar los de Bootstrap -->
+                        <form method="POST" action="" id="registerForm" novalidate>
+                            {% csrf_token %}
+
+                               <div class="mb-3">
+                                <label for="first_name" class="form-label fw-bold">Su Nombre</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                <div class="invalid-feedback">Por favor, ingresa su nombre.</div>
+                            </div>
+                                 <div class="mb-3">
+                                <label for="last_name" class="form-label fw-bold">Su Apellido</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                <div class="invalid-feedback">Por favor, ingresa su apellido.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label fw-bold">Nombre de usuario</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                                <div class="invalid-feedback">Por favor, ingresa un nombre de usuario.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="password" class="form-label fw-bold">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="invalid-feedback" id="passwordError">
+                                    La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número.
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 py-2">Registrarse</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Validación -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById('registerForm');
+            const passwordInput = document.getElementById('password');
+
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+
+                // 1. Validación de campos vacíos o correos inválidos (nativa de HTML5 adaptada a Bootstrap)
+                if (!form.checkValidity()) {
+                    isValid = false;
+                }
+
+                // 2. Validación estricta de contraseña
+                const password = passwordInput.value;
+                const minLength = 8;
+                const hasUppercase = /[A-Z]/.test(password);
+                const hasNumber = /\d/.test(password);
+
+                if (password.length < minLength || !hasUppercase || !hasNumber) {
+                    // Forzar el estado inválido en el input de contraseña
+                    passwordInput.classList.remove('is-valid');
+                    passwordInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    // Estado válido
+                    passwordInput.classList.remove('is-invalid');
+                    passwordInput.classList.add('is-valid');
+                }
+
+                // Si hay algún error, detener el envío
+                if (!isValid) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                // Activar los estilos de validación de Bootstrap en todo el formulario
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+</body>
+</html>

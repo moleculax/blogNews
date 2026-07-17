@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Artículo</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-icons/font/bootstrap-icons.css' %}">
+</head>
+<body class="bg-light">
+    {% include "includes/navbar.html" %}
+
+    {% if user.is_authenticated %}
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h4 class="mb-0">Editar Artículo</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+
+                        <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label for="titular" class="form-label fw-bold">Titular</label>
+                                <input type="text" class="form-control" id="titular" name="titular" maxlength="200" value="{{ articulo.titular }}" required>
+                                <div class="invalid-feedback">El titular es obligatorio.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="articulo" class="form-label fw-bold">Contenido del artículo</label>
+                                <textarea class="form-control" id="articulo" name="articulo" rows="20" required>{{ articulo.articulo }}</textarea>
+                                <div class="invalid-feedback">El contenido no puede estar vacío.</div>
+                            </div>
+
+                            <!-- ===== SELECT DE CATEGORÍAS ===== -->
+
+                        <p>Valor de articulo.categoria: "{{ articulo.categoria }}"</p>
+
+                                         <div class="mb-3">
+                        <label for="categoria" class="form-label fw-bold">Categoría</label>
+                        <select class="form-select" id="categoria" name="categoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            {% for categoria in categoriasjson %}
+                                <option value="{{ categoria.nombre }}" {% if categoria.nombre == articulo.categoria %}selected{% endif %}>
+                                    {{ categoria.nombre }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                            <!-- ================================ -->
+
+                            <div class="mb-3">
+                                <label for="imagen_articulo" class="form-label fw-bold">Imagen del artículo</label>
+                                {% if articulo.imagen_articulo %}
+                                    <div class="mb-2">
+                                        <img src="{{ articulo.imagen_articulo.url }}" alt="Imagen actual" style="max-width: 200px; max-height: 200px;">
+                                        <p class="text-muted">Imagen actual</p>
+                                    </div>
+                                {% endif %}
+                                <input type="file" class="form-control" id="imagen_articulo" name="imagen_articulo" accept="image/*">
+                                <div class="form-text">Dejar vacío para mantener la imagen actual.</div>
+                            </div>
+
+                            <div class="mb-4 form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="status" name="status" value="True" {% if articulo.status %}checked{% endif %}>
+                                <label class="form-check-label fw-bold" for="status">¿Artículo Activo?</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100 py-2">Actualizar Artículo</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        USTED NO ESTA AUTORIZADO
+    {% endif %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "nombre": "Política",
+        "descripcion": "Noticias políticas, elecciones y gobierno",
+        "slug": "politica"
+    },
+    {
+        "id": 2,
+        "nombre": "Economía",
+        "descripcion": "Noticias económicas, finanzas y mercados",
+        "slug": "economia"
+    },
+    {
+        "id": 3,
+        "nombre": "Internacional",
+        "descripcion": "Noticias internacionales y sucesos mundiales",
+        "slug": "internacional"
+    },
+    {
+        "id": 4,
+        "nombre": "Nacional",
+        "descripcion": "Noticias locales y nacionales",
+        "slug": "nacional"
+    },
+    {
+        "id": 5,
+        "nombre": "Deportes",
+        "descripcion": "Noticias deportivas, eventos y análisis",
+        "slug": "deportes"
+    },
+    {
+        "id": 6,
+        "nombre": "Cultura",
+        "descripcion": "Arte, música, literatura y expresiones culturales",
+        "slug": "cultura"
+    },
+    {
+        "id": 7,
+        "nombre": "Espectáculos",
+        "descripcion": "Noticias de farándula, cine, televisión y celebridades",
+        "slug": "espectaculos"
+    },
+    {
+        "id": 8,
+        "nombre": "Salud",
+        "descripcion": "Noticias sobre salud, bienestar y medicina",
+        "slug": "salud"
+    },
+    {
+        "id": 9,
+        "nombre": "Ciencia",
+        "descripcion": "Descubrimientos científicos, investigaciones y avances",
+        "slug": "ciencia"
+    },
+    {
+        "id": 10,
+        "nombre": "Medio Ambiente",
+        "descripcion": "Noticias sobre sostenibilidad, ecología y cambio climático",
+        "slug": "medio-ambiente"
+    },
+    {
+        "id": 11,
+        "nombre": "Educación",
+        "descripcion": "Noticias sobre educación, formación y recursos educativos",
+        "slug": "educacion"
+    },
+    {
+        "id": 12,
+        "nombre": "Seguridad",
+        "descripcion": "Noticias sobre seguridad ciudadana y protección",
+        "slug": "seguridad"
+    },
+    {
+        "id": 13,
+        "nombre": "Tecnología",
+        "descripcion": "Noticias sobre tecnología, innovación y gadgets",
+        "slug": "tecnologia"
+    }
+]

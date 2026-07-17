@@ -1,0 +1,310 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+local_files/
+envs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# ============================================
+# ENTORNOS VIRTUALES
+# ============================================
+# Python virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+virtualenv/
+virtualenvs/
+*.venv
+envs/
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Virtualenv wrapper
+.virtualenvs
+
+# Pipenv
+Pipfile
+Pipfile.lock
+
+# Poetry
+poetry.lock
+pyproject.toml
+
+# Conda
+*.conda
+.conda
+envs/conda/
+
+# ============================================
+# VARIABLES DE ENTORNO
+# ============================================
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+.env.test
+.env.backup
+.env.example
+*.env
+*.env.local
+*.env.production
+
+# Secret keys / sensitive data
+secrets.json
+config.local.py
+secrets.py
+credentials.json
+key.json
+*.key
+*.pem
+*.crt
+
+# ============================================
+# IDEs
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vscode/settings.json
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dataSources.local.xml
+.idea/dataSources/
+*.iml
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# Archivos de usuario
+# ============================================
+uploads/
+media/
+downloads/
+temp/
+tmp/
+
+# ============================================
+# Backups
+# ============================================
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# ============================================
+# OS generated files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# Node / npm (si usas)
+# ============================================
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# ============================================
+# Docker
+# ============================================
+*.pid
+docker-compose.override.yml
+.dockerignore
+
+*.tar.gz
+
+# ============================================
+# Testing
+# ============================================
+.coverage
+.coverage.*
+.coverage.*.random
+htmlcov/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+*.cover
+*.py,cover
+coverage.xml
+
+# ============================================
+# Mkdocs
+# ============================================
+site/
+
+# ============================================
+# Jupyter
+# ============================================
+.ipynb_checkpoints
+*.ipynb
+
+# ============================================
+# Profiling
+# ============================================
+.prof
+*.prof
+
+# ============================================
+# mypy
+# ============================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ============================================
+# pytype
+# ============================================
+.pytype/
+
+# ============================================
+# Cython
+# ============================================
+cython_debug/
+
+# ============================================
+# Otros
+# ============================================
+*.rpo
+*.rbc
+*.rbi
+*.rbs
+*.rbs.cache
+local_files/

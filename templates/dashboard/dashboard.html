@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Blog</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-icons/font/bootstrap-icons.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body { padding-top: 70px; }
+        .stat-card { transition: transform 0.3s; cursor: default; }
+        .stat-card:hover { transform: translateY(-5px); }
+        .sidebar { background: #f8f9fa; min-height: calc(100vh - 70px); }
+        .sidebar .nav-link { color: #333; }
+        .sidebar .nav-link:hover { background: #e9ecef; }
+        .sidebar .nav-link.active { background: #0d6efd; color: white; }
+        .btn-group-actions {
+            width: 160px;
+            flex-shrink: 0;
+        }
+        .btn-group-actions .btn {
+            width: 80px;
+            flex: 0 0 80px;
+            text-align: center;
+            font-size: 13px;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    {% include "includes/navbar.html" %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2 sidebar p-3">
+                <h5 class="text-center text-primary mb-3">
+                    <i class="bi bi-speedometer2"></i> Panel
+                </h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="bi bi-house"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/postearArticulos">
+                            <i class="bi bi-file-earmark-text"></i> Postear Artículo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/list-articulos">
+                            <i class="bi bi-tags"></i> Ver todos los Post
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-10 p-4">
+
+                <h2 class="mb-4">Bienvenido, {{ user.username }}</h2>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card stat-card shadow border-primary">
+                            <div class="card-body text-center">
+                                <h1 class="text-primary">{{ conteo.totalPost|default:0 }}</h1>
+                                <p class="text-muted">Total Posts/Artículos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card stat-card shadow border-success">
+                            <div class="card-body text-center">
+                                <h1 class="text-success">{{ datosUltimosPost|length|default:0 }}</h1>
+                                <p class="text-muted">Últimos Artículos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <i class="bi bi-file-earmark-text"></i> Últimos Artículos
+                            </div>
+                            <div class="card-body">
+                                {% if datosUltimosPost %}
+                                    <ul class="list-group list-group-flush">
+                                        {% for articulo in datosUltimosPost %}
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong>{{ articulo.titular }}</strong>
+                                                    <span class="badge bg-success ms-2">Publicado</span>
+                                                    <br>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i> {{ articulo.tiempo_publicado }}
+                                                    </small>
+                                                    <br>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-calendar"></i> {{ articulo.fecha_publicacion }}
+                                                    </small>
+                                                    <br>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-tag"></i> {{ articulo.categoria }}
+                                                    </small>
+                                                </div>
+                                                <div class="btn-group btn-group-actions" role="group">
+                                                    <a href="/articulo/update/{{ articulo.id }}/" class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-pencil"></i> Editar
+                                                    </a>
+                                                    <button class="btn btn-sm btn-outline-danger" onclick="confirmarEliminacion({{ articulo.id }})">
+                                                        <i class="bi bi-trash"></i> Eliminar
+                                                    </button>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <div class="text-center py-4">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 48px; color: #ccc;"></i>
+                                        <p class="text-muted mt-2">No tienes artículos publicados</p>
+                                        <a href="/postearArticulos" class="btn btn-primary">
+                                            <i class="bi bi-plus"></i> Crear primer artículo
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmarEliminacion(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/articulo/delete/' + id + '/';
+                }
+            });
+        }
+
+        {% if messages %}
+            {% for message in messages %}
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: '{{ message }}',
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+            {% endfor %}
+        {% endif %}
+    </script>
+
+</body>
+</html>

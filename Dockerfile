@@ -8,7 +8,9 @@ FROM python:3.12-slim
 # ============================================
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    DJANGO_SETTINGS_MODULE=blog.settings
+    DJANGO_SETTINGS_MODULE=blog.settings \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # ============================================
 # 3. INSTALAR DEPENDENCIAS DEL SISTEMA
@@ -34,31 +36,26 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # ============================================
-# 7. INSTALAR DJANGO PRIMERO
-# ============================================
-RUN pip install --no-cache-dir Django==6.0.7
-
-# ============================================
-# 8. INSTALAR EL RESTO DE DEPENDENCIAS
+# 7. INSTALAR DEPENDENCIAS
 # ============================================
 RUN pip install --no-cache-dir -r requirements.txt
 
 # ============================================
-# 9. INSTALAR GUNICORN
+# 8. INSTALAR GUNICORN
 # ============================================
-RUN pip install --no-cache-dir gunicorn
+RUN pip install --no-cache-dir gunicorn==23.0.0
 
 # ============================================
-# 10. CREAR DIRECTORIOS
+# 9. CREAR DIRECTORIOS PARA ARCHIVOS ESTÁTICOS
 # ============================================
 RUN mkdir -p /app/staticfiles /app/media
 
 # ============================================
-# 11. PUERTO EXPUESTO
+# 10. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 12. COMANDO DE INICIO
+# 11. COMANDO DE INICIO
 # ============================================
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]

@@ -4,6 +4,8 @@
 Plataforma  para la publicación y
 gestión de artículos, desarrollada con **Django y Bootstrap**.
 
+[![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blogNew_00.png)](https://github.com/moleculax/blogNews/blob/main/media/imagenarticulos/blogNew_00.png)
+
 ## 🚀 Características Principales
 
 - 🔐 **Autenticación de usuarios** (Login/Registro)
@@ -15,6 +17,9 @@ gestión de artículos, desarrollada con **Django y Bootstrap**.
 - 📱 **Diseño responsive** y moderno
 - 🔍 **Paginación** de artículos
 - 🎨 **Interfaz profesional** con Bootstrap 5
+
+
+![Blog News Screenshot](https://raw.githubusercontent.com/moleculax/blogNews/main/media/imagenarticulos/blognews_0.png)
 
 ## 🛠️ Tecnologías Utilizadas
 

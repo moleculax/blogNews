@@ -36,12 +36,12 @@ RUN pip install --upgrade pip
 # ============================================
 # 7. INSTALAR DEPENDENCIAS
 # ============================================
-RUN pip install --no-cache-dir --no-deps -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # ============================================
 # 8. INSTALAR GUNICORN
 # ============================================
-RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
+RUN pip install --no-cache-dir gunicorn==23.0.0
 
 # ============================================
 # 9. CREAR DIRECTORIOS
@@ -49,16 +49,11 @@ RUN pip install --no-cache-dir --no-deps gunicorn==23.0.0
 RUN mkdir -p /app/staticfiles /app/media /app/data
 
 # ============================================
-# 10. DECLARAR VOLÚMENES PARA DATOS PERSISTENTES
-# ============================================
-VOLUME ["/app/db.sqlite3", "/app/media", "/app/staticfiles"]
-
-# ============================================
-# 11. PUERTO EXPUESTO
+# 10. PUERTO EXPUESTO
 # ============================================
 EXPOSE 8000
 
 # ============================================
-# 12. COMANDO DE INICIO
+# 11. COMANDO DE INICIO
 # ============================================
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog.wsgi:application"]
